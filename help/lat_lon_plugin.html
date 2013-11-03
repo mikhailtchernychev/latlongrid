@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.0.0  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Mikhail Tchernychev">
+	<META NAME="CREATED" CONTENT="20131015;16391648">
+	<META NAME="CHANGEDBY" CONTENT="Mikhail Tchernychev">
+	<META NAME="CHANGED" CONTENT="20131015;17104761">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "Microsoft YaHei"; font-size: 16pt }
+		H1.ctl { font-family: "Mangal"; font-size: 16pt }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1 CLASS="western">Latitude / longitude grid lines plugin</H1>
+<P><BR><BR>
+</P>
+<P>Lat/Lon grid plugin is designed to add grid lines to the QGIS
+project. It uses extent of some other GIS layer (vector or raster) to
+compute limits of the grid. This &ldquo;parent&rdquo; layer can be as
+simple as two point features and may not be even visible.</P>
+<P><BR><BR>
+</P>
+<P>Lat/Lon plugin does not allow adding grid lines to other plugin
+layers, such as Open Layers.</P>
+<P>New grid layer is created entirely in memory, i.e grid lines are
+not saved into shape file or other type of GIS vector file.</P>
+<P>Grid lines are <B>always</B> created in geographical coordinate
+system. For this reason &ldquo;project on the fly&rdquo; option is
+always need to be enabled to use that layer (see Project / Project
+properties... menu).</P>
+<P>If parent layer uses geographic coordinate system Lat/Lon plugin
+layer simply uses the same system. If parent layer uses some kind of
+projected CRS (such as GeoTIFF file in UTM) than Lat/Lon plugin
+computes inverse transformation and uses inverted extend of the the
+parent layer.  
+</P>
+<P>All plugin layer settings are saved into QGIS project.</P>
+<P>The main dialog window of Lat/Lon plugin is shown below:</P>
+<P><BR><BR>
+</P>
+<P><IMG SRC="lat_lon_plugin.jpg" NAME="graphics2" ALIGN=LEFT WIDTH=383 HEIGHT=334 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P>Use should do the following:</P>
+<OL>
+	<LI><P>Select parent layer. Dialog presents only suitable layers for
+	selection. If no layer is available warning message is posted and
+	plugin does not start.</P>
+	<LI><P>Select grid label format. Decimal degrees, degrees and
+	minutes and degrees minutes and seconds are available for selection.</P>
+	<LI><P>Specify grid spacing for latitude and longitude grid. These
+	values are specified in the least unit selected above. Therefore if
+	user selects units as &ldquo;decimal degrees&rdquo; grid line
+	spacing is spcified in decimal degrees as well, if user selects
+	&ldquo;degrees and minutes&rdquo; than spacing is in minites, and if
+	&ldquo;degrees, minutes and seconds&rdquo; is selected that spacing
+	is in seconds. Spacing labels change depending of selected format.</P>
+	<LI><P>Labels. Check where labels should be printed. 
+	</P>
+	<LI><P>Label orientation: Labels could be perpendicular or parallel
+	to the area. 
+	</P>
+	<LI><P>Font, color and grid line style allows to select required
+	appearance for the grid lines and labels.</P>
+</OL>
+<P>After  Lat/Lon grid overlay added to the project, user can
+double-click or call &ldquo;propreties&rdquo; dialog for it; the same
+dialog as above is called, so it is always possible to adjust grid
+after it is created. 
+</P>
+<P>If parent layer extent is changed, grid extent is adjusted
+automatically.</P>
+<P>If parent layer is removed, grid layer is removed as well. 
+</P>
+<P><BR><BR>
+</P>
+<P><I>Acknowledgments </I>
+</P>
+<P STYLE="font-style: normal">This plugin was developed using &ldquo;Grid
+Overlay&rdquo; by John Donovan, available for QGIS 1.8 series. I have
+borrowed many ideas and some code from John's plugin. However
+labeling API has changed for QGIS 2.0. There is a possibility that
+Lat/lon grid plugin would become outdated as QGIS labeling  engine is
+being replaced.</P>
+<P STYLE="font-style: normal">This is my first Python program, so not
+all places are nice. 
+</P>
+<P STYLE="font-style: normal"><BR><BR>
+</P>
+<P><I>Contact</I></P>
+<P STYLE="font-style: normal">Please contact Mikhail Tchernychev
+(<A HREF="mailto:mikhail_tchernychev@yahoo.com">mikhail_tchernychev@yahoo.com</A>)
+regrading all issues related to this plugin.</P>
+<P STYLE="font-style: normal"><BR><BR>
+</P>
+</BODY>
+</HTML>

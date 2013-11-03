@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LatLonGrid</class>
+ <widget class="QDialog" name="LatLonGrid">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>372</width>
+    <height>307</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Latitude / Longitude grid lines</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/plugins/latlongrid/icon.png</normaloff>:/plugins/latlongrid/icon.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Select existing layer:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="selected_layer">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Select layer to use for extend of lat/lon grid</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Grid labels format:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="labels_format">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select label format. Grid interval specified below is based on this selection&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Decimal degrees</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Decimal degress and minutes</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Decimal degress, minutes and seconds</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="long_spacing_label">
+       <property name="text">
+        <string>Longitude spacing, deg:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="long_spacing">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Longitude grid step in dec. degrees, minutes or second based on format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="decimals">
+        <number>7</number>
+       </property>
+       <property name="singleStep">
+        <double>0.010000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QLabel" name="lat_spacing_label">
+       <property name="text">
+        <string>Latitude spacing, deg:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="lat_spacing">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Latitude grid step in dec. degrees, minutes or second based on format&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="decimals">
+        <number>7</number>
+       </property>
+       <property name="singleStep">
+        <double>0.010000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_9">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Labels:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="label_north">
+       <property name="toolTip">
+        <string>Check this box to display north labels</string>
+       </property>
+       <property name="text">
+        <string>North</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="label_south">
+       <property name="toolTip">
+        <string>Check this box to display south  labels</string>
+       </property>
+       <property name="text">
+        <string>South</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="label_west">
+       <property name="toolTip">
+        <string>Check this box to display west labels</string>
+       </property>
+       <property name="text">
+        <string>West</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="label_east">
+       <property name="toolTip">
+        <string>Check this box to display east labels</string>
+       </property>
+       <property name="text">
+        <string>East</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Label orientation:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="label_orientation">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Label orientation relatively to the frame&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Perpendicular</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Parallel</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="font_button">
+       <property name="toolTip">
+        <string>Select label font</string>
+       </property>
+       <property name="text">
+        <string>Font...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="color_button">
+       <property name="toolTip">
+        <string>Select label color</string>
+       </property>
+       <property name="text">
+        <string>Color...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <item>
+      <widget class="QPushButton" name="grid_style_button">
+       <property name="toolTip">
+        <string>Set grid lines style</string>
+       </property>
+       <property name="text">
+        <string>Set grid style...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>LatLonGrid</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>LatLonGrid</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>270</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>font_button</sender>
+   <signal>clicked()</signal>
+   <receiver>LatLonGrid</receiver>
+   <slot>chooseFont()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>185</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>color_button</sender>
+   <signal>clicked()</signal>
+   <receiver>LatLonGrid</receiver>
+   <slot>chooseColour()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>185</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>grid_style_button</sender>
+   <signal>clicked()</signal>
+   <receiver>LatLonGrid</receiver>
+   <slot>chooseStyle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>185</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selected_layer</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>LatLonGrid</receiver>
+   <slot>changeLayer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>87</x>
+     <y>5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>labels_format</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>LatLonGrid</receiver>
+   <slot>changeFormat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>205</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>61</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>chooseFont()</slot>
+  <slot>chooseColour()</slot>
+  <slot>chooseStyle()</slot>
+  <slot>changeLayer()</slot>
+  <slot>changeFormat()</slot>
+ </slots>
+</ui>
