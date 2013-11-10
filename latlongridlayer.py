@@ -41,6 +41,7 @@ from latlongriddialog import LatLonGridDialog
 
 
 def convertDMS(dms,hemis, type, digits):
+  
     if dms > 0:
         hemi=hemis[0]
     else:
@@ -167,8 +168,8 @@ class LatLonGridLayer (core.QgsPluginLayer):
             self.get_layer_id_by_name()
             #self.generateGrid()
             self.setValid(True)
-            #self.setLatLonGridCrsAndExtent()
-            #self.generateLatLonGrid()
+            self.setLatLonGridCrsAndExtent()
+            self.generateLatLonGrid()
             self.setCacheImage(None)
             self.emit(QtCore.SIGNAL('repaintRequested()'))
         else:
@@ -602,7 +603,7 @@ class LatLonGridLayer (core.QgsPluginLayer):
                     feat.setAttribute(QgsLabel.Angle,0.)
                     feat.setAttribute(QgsLabel.Alignment, 'center|top')
                 
-                feat.setAttribute(QgsLabel.Text, convertDMS(pos[0], "SN", self.dlg.ui.labels_format.currentIndex(), x_digits))
+                feat.setAttribute(QgsLabel.Text, convertDMS(pos[0], "EW", self.dlg.ui.labels_format.currentIndex(), x_digits))
                 
                 self.label_features.append(feat)
                 
@@ -624,7 +625,7 @@ class LatLonGridLayer (core.QgsPluginLayer):
                     feat.setAttribute(QgsLabel.Alignment, 'center|bottom')
                     feat.setAttribute(QgsLabel.YOffset, 2)
                 
-                feat.setAttribute(QgsLabel.Text, convertDMS(pos[0], "SN", self.dlg.ui.labels_format.currentIndex(), x_digits))
+                feat.setAttribute(QgsLabel.Text, convertDMS(pos[0], "EW", self.dlg.ui.labels_format.currentIndex(), x_digits))
                 
                 self.label_features.append(feat) 
    
@@ -646,7 +647,7 @@ class LatLonGridLayer (core.QgsPluginLayer):
                     feat.setAttribute(QgsLabel.Alignment, 'center|bottom')
                     feat.setAttribute(QgsLabel.YOffset, 2)
                 
-                feat.setAttribute(QgsLabel.Text, convertDMS(pos[1], "WE", self.dlg.ui.labels_format.currentIndex(), y_digits))
+                feat.setAttribute(QgsLabel.Text, convertDMS(pos[1], "NS", self.dlg.ui.labels_format.currentIndex(), y_digits))
                 
                 self.label_features.append(feat)  
                
@@ -668,7 +669,7 @@ class LatLonGridLayer (core.QgsPluginLayer):
                     feat.setAttribute(QgsLabel.Angle,90.)
                     feat.setAttribute(QgsLabel.Alignment, 'center|top')
                 
-                feat.setAttribute(QgsLabel.Text, convertDMS(pos[1], "WE", self.dlg.ui.labels_format.currentIndex(),y_digits))
+                feat.setAttribute(QgsLabel.Text, convertDMS(pos[1], "NS", self.dlg.ui.labels_format.currentIndex(),y_digits))
                 
                 self.label_features.append(feat)                
  
