@@ -206,7 +206,11 @@ class LatLonGridLayer (core.QgsPluginLayer):
                 else:
                     self.dlg.symbol.renderPolyline(polyline, None, renderContext)
 
+        if QGis.QGIS_VERSION_INT > 20200 :
+            self.drawLabels(renderContext)
+        
         self.dlg.symbol.stopRender(renderContext)
+
         return True
 
     def drawLabels(self, renderContext):
@@ -219,6 +223,7 @@ class LatLonGridLayer (core.QgsPluginLayer):
         
         for feat in self.label_features :
             self.label.renderLabel(renderContext, feat, False)
+        return
         
     def writeXml(self, node, doc):
         element = node.toElement()
