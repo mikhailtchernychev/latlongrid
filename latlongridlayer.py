@@ -412,9 +412,8 @@ class LatLonGridLayer (core.QgsPluginLayer):
             return
             
         if layer.crs().geographicFlag() == False:  # deal with projected CRS
-            proj_str = "+proj=longlat +datum=" + layer.crs().ellipsoidAcronym() + " +no_defs"
-            geo_system = QgsCoordinateReferenceSystem()
-            geo_system.createFromProj4(proj_str)
+
+            geo_system = QgsCoordinateReferenceSystem(layer.crs().geographicCRSAuthId())
             core.QgsPluginLayer.setCrs(self, geo_system)
             
             transform  = QgsCoordinateTransform(layer.crs(), geo_system)
